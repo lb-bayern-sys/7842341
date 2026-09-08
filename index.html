@@ -8,67 +8,151 @@
         :root {
             --blb-blue: #003366;
             --blb-light-blue: #0059b3;
-            --blb-accent: #e5edf5;
             --danger: #cc0000;
             --success: #28a745;
             --text: #333333;
             --bg: #f0f2f5;
         }
 
-        body, html { margin: 0; padding: 0; font-family: "Arial", sans-serif; background: var(--bg); color: var(--text); height: 100%; }
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            font-family: "Arial", sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            height: 100%; 
+            overflow-x: hidden;
+        }
+
+        /* --- UTILS --- */
+        * { box-sizing: border-box; }
+        button, .btn-portal, .lang-btn, .sidebar-item {
+            cursor: pointer !important; /* Force pointer cursor */
+            user-select: none; /* Prevent text highlighting on click */
+            -webkit-tap-highlight-color: transparent;
+        }
 
         /* --- LANGUAGE PICKER --- */
         .lang-switcher { display: flex; gap: 10px; align-items: center; margin-right: 20px; }
-        .lang-btn { cursor: pointer; font-size: 12px; font-weight: bold; color: #666; padding: 5px; border: 1px solid #ccc; border-radius: 3px; background: #fff; text-transform: uppercase; }
+        .lang-btn { 
+            font-size: 12px; font-weight: bold; color: #666; padding: 5px 10px; 
+            border: 1px solid #ccc; border-radius: 3px; background: #fff; 
+            text-transform: uppercase; transition: 0.2s;
+        }
         .lang-btn.active { background: var(--blb-blue); color: #fff; border-color: var(--blb-blue); }
 
         /* --- NAVIGATION --- */
-        #public-nav { background: #fff; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--blb-blue); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 28px; font-weight: bold; color: var(--blb-blue); letter-spacing: -1px; }
+        #public-nav { 
+            background: #fff; padding: 15px 8%; display: flex; justify-content: space-between; 
+            align-items: center; border-bottom: 4px solid var(--blb-blue); 
+            position: sticky; top: 0; z-index: 1000; 
+        }
+        .logo { font-size: 28px; font-weight: bold; color: var(--blb-blue); letter-spacing: -1px; cursor: pointer; }
         .logo span { color: var(--blb-light-blue); }
         .nav-right { display: flex; align-items: center; }
-        .btn-portal { background: var(--blb-blue); color: white; padding: 10px 20px; border-radius: 2px; text-decoration: none; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 13px; }
+        .btn-portal { 
+            background: var(--blb-blue); color: white; padding: 10px 20px; 
+            border-radius: 2px; text-decoration: none; font-weight: bold; 
+            text-transform: uppercase; font-size: 13px; border: none; transition: 0.2s;
+        }
+        .btn-portal:hover { background: var(--blb-light-blue); }
 
         /* --- SECTIONS --- */
         #home-section { display: block; }
-        .hero { height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,51,102,0.7), rgba(0,51,102,0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200') center/cover; color: white; }
+        .hero { 
+            height: 60vh; display: flex; align-items: center; justify-content: center; 
+            text-align: center; 
+            background: linear-gradient(rgba(0,51,102,0.7), rgba(0,51,102,0.7)), 
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200') center/cover; 
+            color: white; 
+            position: relative; z-index: 1;
+        }
         .footer-addr { background: #fff; padding: 40px; text-align: center; border-top: 1px solid #ddd; font-size: 14px; color: #666; }
 
-        #login-section { display: none; height: 85vh; justify-content: center; align-items: center; }
-        .login-card { background: #fff; padding: 40px; border-top: 5px solid var(--blb-blue); width: 100%; max-width: 400px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        
-        #dashboard-container { display: none; height: 100vh; width: 100%; }
-        .sidebar { width: 260px; background: var(--blb-blue); height: 100vh; position: fixed; color: white; z-index: 10; }
+        /* --- LOGIN --- */
+        #login-section { 
+            display: none; 
+            height: 100vh; /* Changed from 85vh to 100vh for better centering */
+            justify-content: center; 
+            align-items: center; 
+            background: var(--bg);
+            position: relative;
+            z-index: 100;
+        }
+        .login-card { 
+            background: #fff; padding: 40px; border-top: 5px solid var(--blb-blue); 
+            width: 100%; max-width: 400px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+            border-radius: 4px;
+        }
+
+        /* --- DASHBOARD --- */
+        #dashboard-container { 
+            display: none; 
+            height: 100vh; width: 100%; 
+            background: var(--bg);
+        }
+        .sidebar { 
+            width: 260px; background: var(--blb-blue); height: 100vh; 
+            position: fixed; color: white; z-index: 10; 
+            display: flex; flex-direction: column;
+        }
         .sidebar-brand { padding: 30px; font-size: 22px; font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .sidebar-item { padding: 18px 30px; cursor: pointer; transition: 0.2s; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .sidebar-item { 
+            padding: 18px 30px; transition: 0.2s; font-size: 14px; 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
         .sidebar-item:hover { background: var(--blb-light-blue); }
         .sidebar-item.active { background: var(--blb-light-blue); font-weight: bold; }
         
-        .main-view { margin-left: 260px; padding: 40px; width: calc(100% - 260px); box-sizing: border-box; min-height: 100vh; }
-        .page-view { display: none; }
+        .main-view { 
+            margin-left: 260px; padding: 40px; width: calc(100% - 260px); 
+            box-sizing: border-box; min-height: 100vh; 
+        }
+        .page-view { display: none; animation: fadeIn 0.3s; }
         .page-view.active { display: block; }
 
-        .card { background: #fff; padding: 30px; margin-bottom: 30px; border: 1px solid #e1e1e1; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card { background: #fff; padding: 30px; margin-bottom: 30px; border: 1px solid #e1e1e1; border-radius: 4px; }
         .balance-val { font-size: 38px; font-weight: bold; color: var(--blb-blue); margin: 15px 0; }
         
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 8px; color: var(--blb-blue); }
-        .form-group input { width: 100%; padding: 12px; border: 1px solid #ccc; box-sizing: border-box; }
-        .btn-submit { width: 100%; padding: 15px; background: var(--blb-light-blue); color: white; border: none; font-weight: bold; cursor: pointer; }
+        .form-group input { 
+            width: 100%; padding: 12px; border: 1px solid #ccc; 
+            box-sizing: border-box; border-radius: 2px; outline: none; transition: 0.2s; 
+        }
+        .form-group input:focus { border-color: var(--blb-blue); box-shadow: 0 0 0 2px rgba(0,89,179,0.1); }
+        
+        .btn-submit { 
+            width: 100%; padding: 15px; background: var(--blb-light-blue); 
+            color: white; border: none; font-weight: bold; 
+            border-radius: 2px; transition: 0.2s;
+        }
+        .btn-submit:hover { background: var(--blb-blue); }
 
-        table { width: 100%; border-collapse: collapse; }
-        th { background: #f8f9fa; padding: 15px; text-align: left; font-size: 12px; border-bottom: 2px solid #ddd; }
-        td { padding: 15px; border-bottom: 1px solid #eee; font-size: 14px; }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        th { background: #f8f9fa; padding: 15px; text-align: left; font-size: 12px; border-bottom: 2px solid #ddd; color: #555; }
+        td { padding: 15px; border-bottom: 1px solid #eee; }
         .amt-pos { color: var(--success); font-weight: bold; }
         .amt-neg { color: var(--danger); font-weight: bold; }
         
-        .error-banner { background: #fff0f0; color: #b30000; padding: 20px; border-left: 5px solid var(--danger); margin-bottom: 30px; display: none; }
+        .error-banner { 
+            background: #fff0f0; color: #b30000; padding: 20px; 
+            border-left: 5px solid var(--danger); margin-bottom: 30px; 
+            display: none; border-radius: 0 4px 4px 0;
+        }
     </style>
 </head>
 <body>
 
 <nav id="public-nav">
-    <div class="logo">Bayern<span>LB</span></div>
+    <div class="logo" onclick="location.reload()">Bayern<span>LB</span></div>
     <div class="nav-right">
         <div class="lang-switcher">
             <div class="lang-btn active" id="btn-de" onclick="setLanguage('de')">DE</div>
@@ -83,7 +167,7 @@
         <div>
             <h1 id="txt-hero-h1">Finanzpartner für den Fortschritt</h1>
             <p id="txt-hero-p">Spezialisierte Finanzlösungen für institutionelle Kunden und Privatvermögen.</p><br>
-            <button class="btn-submit" id="txt-hero-btn" style="width:280px;" onclick="showSection('login')">Zum Kundenportal</button>
+                        <button class="btn-submit" id="txt-hero-btn" style="width:280px;" onclick="showSection('login')">Zum Kundenportal</button>
         </div>
     </div>
     <div class="footer-addr">
@@ -251,7 +335,7 @@
         document.getElementById('txt-balance-lbl').innerText = d.balanceLbl;
         document.getElementById('txt-account-type').innerText = d.accType;
         document.getElementById('txt-trans-title').innerText = d.transTitle;
-        document.getElementById('txt-table-head').innerHTML = d.tableHead;
+                document.getElementById('txt-table-head').innerHTML = d.tableHead;
         document.getElementById('txt-vire-h1').innerText = d.vireH1;
         document.getElementById('txt-vire-from').innerText = d.vireFrom;
         document.getElementById('txt-vire-name').innerText = d.vireName;
@@ -272,25 +356,28 @@
         document.getElementById('home-section').style.display = 'none';
         document.getElementById('login-section').style.display = 'none';
         document.getElementById('dashboard-container').style.display = 'none';
-        if(id === 'login') document.getElementById('login-section').style.display = 'flex';
-        else if(id === 'dash') {
+        
+        if(id === 'login') {
+            document.getElementById('login-section').style.display = 'flex';
+        } else if(id === 'dash') {
             document.getElementById('dashboard-container').style.display = 'flex';
             document.getElementById('public-nav').style.display = 'none';
+        } else {
+            document.getElementById('home-section').style.display = 'block';
         }
-        else document.getElementById('home-section').style.display = 'block';
     }
 
-function attemptLogin() {
-    const userField = document.getElementById('user').value;
-    const passField = document.getElementById('pass').value;
+    function attemptLogin() {
+        const userField = document.getElementById('user').value;
+        const passField = document.getElementById('pass').value;
 
-    // Validation for Account Number: 7842341 and Password: Andersen784
-    if(userField === "7842341" && passField === "Andersen784") {
-        showSection('dash');
-    } else {
-        alert("Login Error: Invalid credentials.");
+        // Validation for Account Number: 7842341 and Password: Andersen784
+        if(userField === "7842341" && passField === "Andersen784") {
+            showSection('dash');
+        } else {
+            alert("Login Error: Invalid credentials.");
+        }
     }
-}
 
     function navigateTo(p) {
         document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active'));
@@ -313,3 +400,4 @@ function attemptLogin() {
 
 </body>
 </html>
+
