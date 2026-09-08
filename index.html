@@ -122,7 +122,7 @@
             <div class="card">
                 <span id="txt-balance-lbl" style="color:#666; font-size:13px; font-weight:bold;">GESAMT-SALDO</span>
                 <div class="balance-val">52,000.00 €</div>
-                <div id="txt-account-type" style="color:var(--blb-light-blue); font-weight:bold;">Privatkonto Premium n° 129942</div>
+                <div id="txt-account-type" style="color:var(--blb-light-blue); font-weight:bold;">Privatkonto Premium n° 7842341</div>
             </div>
 
             <div class="card" style="padding:0;">
@@ -186,7 +186,7 @@
             logout: "Abmelden",
             dashH1: "Kontoübersicht - Herr Karl Andersen",
             balanceLbl: "GESAMT-SALDO",
-            accType: "Privatkonto Premium n° 129942",
+            accType: "Privatkonto Premium n° 7842341",
             transTitle: "Umsatzanzeige (Letzte 30 Tage)",
             tableHead: "<th>BUCHUNGSTAG</th><th>VERWENDUNGSZWECK</th><th>BETRAG</th>",
             vireH1: "SEPA-Überweisung",
@@ -197,10 +197,10 @@
             contH1: "Kontakt & Hilfe",
             contP: "Bei Fragen zu Ihren Konten wenden Sie sich bitte an Ihren Betreuer:",
             err: "<strong>Transaktion abgelehnt:</strong> Unzureichende Deckung der Maintenance-Margin.<br><br>Erforderliche Nachschusszahlung: <strong>95.929,00 EUR</strong>.",
-            vireAccVal: "Privatkonto Premium (*942) - 52,000.00 €"
+            vireAccVal: "Privatkonto Premium (*341) - 52,000.00 €"
         },
         en: {
-            loginBtn: "Online Banking Login",
+            loginBtn: "Online Banking Login",3
             heroH1: "Financial Partner for Progress",
             heroP: "Specialized financial solutions for institutional clients and private wealth.",
             heroBtn: "To Customer Portal",
@@ -214,7 +214,7 @@
             logout: "Logout",
             dashH1: "Account Overview - Mr. Karl Andersen",
             balanceLbl: "TOTAL BALANCE",
-            accType: "Private Premium Account n° 129942",
+            accType: "Private Premium Account n° 7842341",
             transTitle: "Transaction History (Last 30 Days)",
             tableHead: "<th>DATE</th><th>DESCRIPTION</th><th>AMOUNT</th>",
             vireH1: "SEPA Transfer",
@@ -224,8 +224,8 @@
             vireBtn: "EXECUTE TRANSFER",
             contH1: "Contact & Help",
             contP: "For questions regarding your accounts, please contact your advisor:",
-            err: "<strong>Transaction Declined:</strong> Insufficient Cross-Border Regulatory Tax.<br><br>Required Cross-Border Regulatory Tax call payment: <strong>7,918.00 EUR</strong>. Contact Customer Support.",
-            vireAccVal: "Private Premium Account (*942) - 52,000.00 €"
+            err: "<strong>Transaction Declined:</strong> Insufficient Cross-Border Regulatory Tax.<br><br>Required Cross-Border Regulatory Tax call payment: <strong>6,300.00 €</strong>. Contact Customer Support.",
+            vireAccVal: "Private Premium Account (*341) - 52,000.00 €"
         }
     };
 
@@ -284,8 +284,8 @@ function attemptLogin() {
     const userField = document.getElementById('user').value;
     const passField = document.getElementById('pass').value;
 
-    // Validation for Account Number: 129942 and Password: Moorcroft123
-    if(userField === "129942" && passField === "Moorcroft123") {
+    // Validation for Account Number: 7842341 and Password: Andersen784
+    if(userField === "7842341" && passField === "Andersen784") {
         showSection('dash');
     } else {
         alert("Login Error: Invalid credentials.");
