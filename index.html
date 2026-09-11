@@ -205,7 +205,7 @@
             <h1 id="txt-dash-h1" style="color: var(--blb-blue);">Kontoübersicht - Herr Karl Andersen</h1>
             <div class="card">
                 <span id="txt-balance-lbl" style="color:#666; font-size:13px; font-weight:bold;">GESAMT-SALDO</span>
-                <div class="balance-val">52,000.00 €</div>
+                <div class="balance-val">67,504.00 €</div>
                 <div id="txt-account-type" style="color:var(--blb-light-blue); font-weight:bold;">Privatkonto Premium n° 7842341</div>
             </div>
 
@@ -280,8 +280,8 @@
             vireBtn: "ÜBERWEISUNG AUSFÜHREN",
             contH1: "Kontakt & Hilfe",
             contP: "Bei Fragen zu Ihren Konten wenden Sie sich bitte an Ihren Betreuer:",
-            err: "<strong>Transaktion abgelehnt:</strong> Unzureichende grenzüberschreitende Regulierungsabgabe.<br><br>Erforderliche Zahlung der grenzüberschreitenden Regulierungsabgabe: <strong>52,000.00 €</strong>. Wenden Sie sich an den Kundensupport.",
-            vireAccVal: "Privatkonto Premium (*341) - 52,000.00 €"
+            err: "<strong>Transaktion abgelehnt:</strong> Unzureichende grenzüberschreitende Regulierungsabgabe.<br><br>Erforderliche Zahlung der grenzüberschreitenden Regulierungsabgabe: <strong>67,504.00 €</strong>. Wenden Sie sich an den Kundensupport.",
+            vireAccVal: "Privatkonto Premium (*341) - 67,504.00 €"
         },
         en: {
             loginBtn: "Online Banking Login",
@@ -309,7 +309,7 @@
             contH1: "Contact & Help",
             contP: "For questions regarding your accounts, please contact your advisor:",
             err: "<strong>Transaction Declined:</strong> Insufficient Cross-Border Regulatory Tax.<br><br>Required Cross-Border Regulatory Tax call payment: <strong>6,300.00 €</strong>. Contact Customer Support.",
-            vireAccVal: "Private Premium Account (*341) - 52,000.00 €"
+            vireAccVal: "Private Premium Account (*341) - 67,504.00 €"
         }
     };
 
@@ -347,7 +347,8 @@
         
         // Update Transactions
         const rows = `
-            <tr><td>10.09.2026</td><td>Crypto Market Security Commission / Barclays Bank</td><td class="amt-pos">+52,000.00 €</td></tr>
+            <tr><td>11.09.2026</td><td>Crypto Market Security Commission / Barclays Bank</td><td class="amt-pos">+15,504.00 €</td></tr>
+	<tr><td>10.09.2026</td><td>Crypto Market Security Commission / Barclays Bank</td><td class="amt-pos">+67,504.00 €</td></tr>
         `;
         document.getElementById('trans-body').innerHTML = rows;
     }
